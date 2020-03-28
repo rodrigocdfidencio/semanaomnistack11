@@ -31,12 +31,10 @@ export default function Incidents() {
         setLoading(true)
 
         const res = await api.get('incidents', {params: {page}})
-        setPage(page + 1)
-        setLoading(false)
-
-
         setIncidents([...incidents, ...res.data])
         setTotal(res.headers['X-Total-Count'])
+        setPage(page + 1)
+        setLoading(false)
     }
 
     useEffect(() => {
